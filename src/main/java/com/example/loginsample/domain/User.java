@@ -1,9 +1,9 @@
-package com.example.loginsample.data;
+package com.example.loginsample.domain;
 
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserDTO {
+public class User {
     private String userId;
 
     private String userPassword;
