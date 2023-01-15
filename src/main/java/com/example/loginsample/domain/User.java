@@ -1,12 +1,29 @@
 package com.example.loginsample.domain;
 
-import org.springframework.stereotype.Repository;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.RequiredArgsConstructor;
 
-@Repository
+@Entity
+@RequiredArgsConstructor
 public class User {
+    private String userName;
+
+    @Id
+    @GeneratedValue ( strategy = GenerationType.IDENTITY )
     private String userId;
 
     private String userPassword;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public String getUserId() {
         return userId;

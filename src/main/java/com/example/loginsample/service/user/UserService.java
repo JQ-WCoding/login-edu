@@ -2,20 +2,24 @@ package com.example.loginsample.service.user;
 
 import com.example.loginsample.domain.User;
 import com.example.loginsample.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
+@Transactional
 @Service
+@RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public String singUp(User user) {
+        userRepository.save( user );
+        return user.getUserId();
     }
 
-    public String singUp(User user) {
-
-        userRepository.save( user );
-        return "";
+    public Optional<User> findMember(String userId) {
+        return userRepository.findById( userId );
     }
 }
