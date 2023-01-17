@@ -21,7 +21,7 @@ public class UserController {
 
     @PostMapping ( "api/users/login" )
     public ResponseEntity<?> getMemberById(@RequestParam Map loginInfo) {
-        Optional<User> userId = userService.findMember( ( String ) loginInfo.get( "userId" ) );
+        Optional<User> userId = userService.findMember( ( String ) loginInfo.get( "userId" ), ( String ) loginInfo.get( "userPasswrod" ) );
 
         return ResponseEntity.ok( userId );
     }

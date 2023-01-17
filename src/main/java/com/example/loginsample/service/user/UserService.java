@@ -19,7 +19,11 @@ public class UserService {
         return user.getUserId();
     }
 
-    public Optional<User> findMember(String userId) {
-        return userRepository.findById( userId );
+    public Optional<User> findMember(String userId, String userPassword) {
+        Optional<User> user = userRepository.findById( userId );
+
+        System.out.println( user.get() );
+
+        return user;
     }
 }
