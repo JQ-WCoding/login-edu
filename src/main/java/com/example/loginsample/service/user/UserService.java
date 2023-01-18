@@ -20,9 +20,8 @@ public class UserService {
     }
 
     public Optional<User> findMember(String userId, String userPassword) {
-        Optional<User> user = userRepository.findById( userId );
-
-        System.out.println( user.get() );
+        // 실질적인 서비스 구현
+        Optional<User> user = userRepository.findById( userId, userPassword );
 
         return user;
     }

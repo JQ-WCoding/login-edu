@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -19,19 +18,20 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping ( "api/users/login" )
-    public ResponseEntity<?> getMemberById(@RequestParam Map loginInfo) {
-        Optional<User> userId = userService.findMember( ( String ) loginInfo.get( "userId" ), ( String ) loginInfo.get( "userPasswrod" ) );
+    @PostMapping ( "/api/user/login" )
+    public ResponseEntity<?> login(@RequestParam String userId, @RequestParam String userPassword) throws Exception {
+        Optional<User> user = userService.findMember( userId, userPassword );
 
-        return ResponseEntity.ok( userId );
+        return ResponseEntity.ok( user );
     }
 
 
-    @PostMapping ( "/api/users/add" )
-    public ResponseEntity<?> signUp(@RequestParam Map userInfo) {
+    @PostMapping ( "/api/user/signUp" )
+    public ResponseEntity<?> signUp(@RequestParam String userName, @RequestParam String userId, @RequestParam String userPassword) {
         User user = new User();
-        user.setUserId( ( String ) userInfo.get( "userId" ) );
-        user.setUserPassword( ( String ) userInfo.get( "userPasswrod" ) );
+        user.setUserId( userId );
+        user.setUserName( userName );
+        user.setUserPassword( userPassword );
 
         String result = userService.singUp( user );
 

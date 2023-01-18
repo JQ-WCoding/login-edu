@@ -2,9 +2,11 @@ package com.example.loginsample.repository;
 
 import com.example.loginsample.domain.User;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -12,18 +14,22 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserRepositoryImpl implements UserRepository {
 
-    private final EntityManager entityManager;
+    @PersistenceContext
+    private final EntityManager em;
 
 
     @Override
     public User save(User user) {
-        entityManager.persist( user );
+        em.persist( user );
         return user;
     }
 
     @Override
-    public Optional<User> findById(String id) {
-        User user = entityManager.find( User.class, id );
-        return Optional.ofNullable( user );
+    public Optional findById(String userId, String userPassword) {
+        List<User> resultList = em.createQuery( "select u from User u where u.userId = :userid and u.userPassword = :userpassword", User.class )
+                .setParameter( "userid", userId )
+                .setParameter( "userpassword", userPassword )
+                .getResultList();
+        return Optional.ofNullable( resultList );
     }
 }
