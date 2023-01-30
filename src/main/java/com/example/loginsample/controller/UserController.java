@@ -28,10 +28,11 @@ public class UserController {
 
     @PostMapping ( "/api/user/signUp" )
     public ResponseEntity<?> signUp(@RequestParam String userName, @RequestParam String userId, @RequestParam String userPassword) {
-        User user = new User();
-        user.setUserId( userId );
-        user.setUserName( userName );
-        user.setUserPassword( userPassword );
+        User user = User.builder()
+                .userId( userId )
+                .userName( userName )
+                .userPassword( userPassword )
+                .build();
 
         String result = userService.singUp( user );
 

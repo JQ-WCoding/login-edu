@@ -25,7 +25,7 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public Optional findById(String userId, String userPassword) {
+    public Optional<?> findById(String userId, String userPassword) {
         List<User> resultList = em.createQuery( "select u from User u where u.userId = :userid and u.userPassword = :userpassword", User.class )
                 .setParameter( "userid", userId )
                 .setParameter( "userpassword", userPassword )

@@ -19,10 +19,9 @@ public class UserService {
         return user.getUserId();
     }
 
+    @SuppressWarnings ( "unchecked" )
     public Optional<User> findMember(String userId, String userPassword) {
         // 실질적인 서비스 구현
-        Optional<User> user = userRepository.findById( userId, userPassword );
-
-        return user;
+        return userRepository.findById( userId, userPassword );
     }
 }

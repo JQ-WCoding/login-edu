@@ -1,11 +1,17 @@
 package com.example.loginsample.domain;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Table (name="ADMIN_USER")
+@Table ( name = "ADMIN_USER" )
+@Getter
+@Setter
 @RequiredArgsConstructor
+@Builder
 public class User {
     @Id
     @GeneratedValue ( strategy = GenerationType.IDENTITY )
@@ -15,36 +21,4 @@ public class User {
     private String userId;
 
     private String userPassword;
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 }
