@@ -1,18 +1,20 @@
 package com.example.loginsample.domain;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table ( name = "ADMIN_USER" )
 @Getter
 @Setter
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Builder
 public class User {
+    public User() {
+    }
     @Id
     @GeneratedValue ( strategy = GenerationType.IDENTITY )
     private Long id;
