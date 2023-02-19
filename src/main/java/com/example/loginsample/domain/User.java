@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table ( name = "ADMIN_USER" )
+@Table ( name = "USER" )
 @Getter
 @Setter
 @AllArgsConstructor

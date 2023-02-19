@@ -1,7 +1,7 @@
 package com.example.loginsample.service.user;
 
 import com.example.loginsample.domain.User;
-import com.example.loginsample.repository.UserRepository;
+import com.example.loginsample.repository.user.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

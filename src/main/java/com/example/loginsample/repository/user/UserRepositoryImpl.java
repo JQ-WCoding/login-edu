@@ -1,4 +1,4 @@
-package com.example.loginsample.repository;
+package com.example.loginsample.repository.user;
 
 import com.example.loginsample.domain.User;
 import jakarta.persistence.EntityManager;
