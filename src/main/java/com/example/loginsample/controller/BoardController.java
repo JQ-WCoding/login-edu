@@ -5,10 +5,7 @@ import com.example.loginsample.service.board.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -19,7 +16,7 @@ public class BoardController {
 
     private final BoardService boardService;
 
-    @PostMapping ( "/getAll" )
+    @GetMapping ( "/getAll" )
     public ResponseEntity<?> getAllBoard() {
         Optional result = boardService.getAll();
 
@@ -31,5 +28,18 @@ public class BoardController {
         Optional<Board> boardOne = boardService.findBoardOne( boardId );
 
         return ResponseEntity.ok( boardOne );
+    }
+
+    @PostMapping ( "/save" )
+    public ResponseEntity<?> saveBoard(@RequestParam String title, @RequestParam String content, @RequestParam String userId) {
+        Board board = Board.builder()
+                .title( title )
+                .content( content )
+                .insPersonId( userId )
+                .build();
+
+        String result = boardService.save( board );
+
+        return ResponseEntity.ok( result );
     }
 }

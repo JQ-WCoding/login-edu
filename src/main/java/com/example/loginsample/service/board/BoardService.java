@@ -21,4 +21,9 @@ public class BoardService {
     public Optional getAll() {
         return boardRepository.findAll();
     }
+
+    public String save(Board board) {
+        boardRepository.save( board );
+        return board.getTitle();
+    }
 }

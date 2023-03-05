@@ -1,10 +1,7 @@
 package com.example.loginsample.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table ( name = "USER" )
@@ -12,6 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @Builder
+@Data
 public class User {
     public User() {
     }
