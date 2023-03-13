@@ -17,7 +17,7 @@ public class BoardRepositoryImpl implements BoardRepository {
     private final EntityManager em;
 
     @Override
-    public Board save(Board board) {
+    public Board insert(Board board) {
         em.persist( board );
         return board;
     }

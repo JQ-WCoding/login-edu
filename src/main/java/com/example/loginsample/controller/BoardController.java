@@ -30,6 +30,19 @@ public class BoardController {
         return ResponseEntity.ok( boardOne );
     }
 
+    @PostMapping ( "/insert" )
+    public ResponseEntity<?> insertBoard(@RequestParam String title, @RequestParam String content, @RequestParam String userId) {
+        Board board = Board.builder()
+                .title( title )
+                .content( content )
+                .insPersonId( userId )
+                .build();
+
+        String result = boardService.insert( board );
+
+        return ResponseEntity.ok( result );
+    }
+
     @PostMapping ( "/save" )
     public ResponseEntity<?> saveBoard(@RequestParam String title, @RequestParam String content, @RequestParam String userId) {
         Board board = Board.builder()
@@ -38,7 +51,7 @@ public class BoardController {
                 .insPersonId( userId )
                 .build();
 
-        String result = boardService.save( board );
+        String result = boardService.insert( board );
 
         return ResponseEntity.ok( result );
     }

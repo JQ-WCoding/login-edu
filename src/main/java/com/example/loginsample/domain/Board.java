@@ -5,7 +5,7 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table ( name = "BOARD" )
@@ -32,9 +32,9 @@ public class Board {
 
     @Column ( name = "INS_DATE" )
     @CreationTimestamp
-    private LocalDateTime insDate;
+    private LocalDate insDate;
 
     @Column ( name = "UPD_DATE" )
     @UpdateTimestamp
-    private LocalDateTime updDate;
+    private LocalDate updDate;
 }

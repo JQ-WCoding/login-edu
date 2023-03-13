@@ -5,7 +5,7 @@ import com.example.loginsample.domain.Board;
 import java.util.Optional;
 
 public interface BoardRepository {
-    Board save(Board board);
+    Board insert(Board board);
 
     Optional findById(Long boardNo);
 
